@@ -51,6 +51,9 @@
 	</dependencies>
 
 	<build>
+		<defaultGoal>
+			clean
+		</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -63,6 +66,16 @@
 				<version>3.8.1</version>
 				<configuration>
 					<release>11</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>3.0.4</version>
+				<configuration>
+					<processTypes>
+						<web> java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+					</processTypes>
 				</configuration>
 			</plugin>
 		</plugins>
